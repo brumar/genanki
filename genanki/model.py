@@ -1,7 +1,6 @@
 from copy import copy
 from cached_property import cached_property
 import chevron
-import yaml
 
 class Model:
 
@@ -27,14 +26,10 @@ class Model:
   def set_fields(self, fields):
     if isinstance(fields, list):
       self.fields = fields
-    elif isinstance(fields, str):
-      self.fields = yaml.full_load(fields)
 
   def set_templates(self, templates):
     if isinstance(templates, list):
       self.templates = templates
-    elif isinstance(templates, str):
-      self.templates = yaml.full_load(templates)
 
   @cached_property
   def _req(self):

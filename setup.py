@@ -18,8 +18,7 @@ setup(name='genanki',
       install_requires=[
         'cached-property',
         'frozendict',
-        'chevron',
-        'pyyaml',
+        'chevron'
       ],
       setup_requires=[
           'pytest-runner',
