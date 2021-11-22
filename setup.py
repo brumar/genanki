@@ -4,12 +4,12 @@ version = {}
 with open('genanki/version.py') as fp:
   exec(fp.read(), version)
 
-setup(name='genanki',
+setup(name='genanki-noyaml',
       version=version['__version__'],
       description='Generate Anki decks programmatically',
-      url='http://github.com/kerrickstaley/genanki',
-      author='Kerrick Staley',
-      author_email='k@kerrickstaley.com',
+      url='http://github.com/brumar/genanki',
+      author='Bruno Martin',
+      author_email='martin.bruno.mail@gmail.com',
       license='MIT',
       packages=['genanki'],
       zip_safe=False,

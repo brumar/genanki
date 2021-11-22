@@ -52,6 +52,25 @@ class Package:
       for idx, path in media_file_idx_to_path.items():
         outzip.write(path, str(idx))
 
+def write_to_existing_db(self, dbfilename, timestamp: Optional[float] = None):
+    """
+    :param dbfilename: existing sqlitedb
+    :param timestamp: Timestamp (float seconds since Unix epoch) to assign to generated notes/cards. Can be used to
+        make build hermetic. Defaults to time.time().
+    """
+    conn = sqlite3.connect(dbfilename)
+    cursor = conn.cursor()
+
+    if timestamp is None:
+      timestamp = time.time()
+
+    id_gen = itertools.count(int(timestamp * 1000))
+    self.write_to_db(cursor, timestamp, id_gen)
+    conn.commit()
+    conn.close()
+
+
+
   def write_to_db(self, cursor, timestamp: float, id_gen):
     cursor.executescript(APKG_SCHEMA)
     cursor.executescript(APKG_COL)
